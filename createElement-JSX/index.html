@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>createElement with JSX</title>
+
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const rootElement = document.getElementById("root")
+
+    // Using JSX and Babel
+    const content = "Hello World"
+    const myClassName = "container"
+    const props = {
+      className: "container",
+      children: "Hello World"
+    }
+    const element = <div {...props} className="my-class" />
+    ReactDOM.render(element, rootElement)
+
+    // Braces allow you to exit JSX and write any JavaScript you want as long as it evaluates to an expression.
+    // This also allows you to have your view logic as part of your markup.
+    // You can spread a props object into your JSX element.
+    // You can override these passed in props
+  </script>
+</body>
+
+</html>
