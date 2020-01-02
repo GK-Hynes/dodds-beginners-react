@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>propTypes</title>
+
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+
+
+    class SayHello extends React.Component {
+      static propTypes = {
+        firstName: PropTypes.string.isRequired,
+        lastName: PropTypes.string.isRequired
+      }
+      render() {
+        const { firstName, lastName } = this.props
+        return (
+          <div>
+            Hello {firstName} {lastName || "Unknown"} !
+        </div >
+        )
+      }
+    }
+
+    // const PropTypes = {
+    //   string(props, propName, componentName) {
+    //     if (typeof props[propName] !== "string") {
+    //       return new Error(`Hey, you should pass a string for ${propName} in ${componentName} but you passed a ${typeof props[propName]}!`)
+    //     }
+    //   }
+    // }
+
+    ReactDOM.render(<SayHello firstName={true} />, document.getElementById("root"))
+
+    // propTypes let you validate that the data passed in as props is valid.
+    //  For performance reasons, propTypes is only checked in development mode
+  </script>
+</body>
+
+</html>
