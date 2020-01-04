@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Styling Components</title>
+
+</head>
+
+<body>
+  <div id="root"></div>
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    .box {
+      border: 1px solid #000000;
+      width: 120px;
+      height: 120px;
+    }
+
+    .box--small {
+      width: 60px;
+      height: 60px;
+    }
+
+    .box--large {
+      width: 180px;
+      height: 180px;
+    }
+  </style>
+  <script type="text/babel">
+
+    function Box({ style, size, className = "", ...rest }) {
+      const sizeClassName = size ? `box--${size}` : ""
+      return (
+        <div className={`box ${className} ${sizeClassName}`} style={{ paddingLeft: 20, ...style }}{...rest} />
+      )
+    }
+
+    const element = (
+      <div>
+        <Box size="small" style={{ backgroundColor: "lightblue" }}>small box</Box>
+        <Box size="medium" style={{ backgroundColor: "pink" }}>medium box</Box>
+        <Box size="large" style={{ backgroundColor: "orange" }}>large box</Box>
+      </div>
+    )
+
+    ReactDOM.render(element, document.getElementById("root"))
+
+    // You can use the className prop to assign classNames used in regular CSS styles and you can use the style prop
+    // The style prop accepts an object as it is easier to compose than if it had to work with strings of CSS
+
+  </script>
+</body>
+
+</html>
